@@ -1,0 +1,157 @@
+{% extends 'base.html' %} {% load static %} {% load humanize %} {% block content %}
+<header>
+    <!--Header dan Highlight Utama-->
+    <nav class="navbar">
+        <div class="container-fluid" style="padding-top: 20px;">
+            <div class="#">
+                <a href="/" class="logo"><img src="{% static 'image/logo.png' %}" class="img-fluid"></a>
+                <a class="mop" href="#">Tangan Laut</a>
+            </div>
+            <div class="nav navbar-nav1">
+                <a href="/" class="btn">Beranda</a>
+                <a href="/donasi" class="btn">Donasi</a>
+                <a href="/aksi" class="btn">Aksi</a>
+                <a href="/donasi_kelola" class="btn">Login</a>
+                <a href="#first-section" class="btn btn1">Hubungi Kami</a>
+            </div>
+
+        </div>
+
+        <div style="padding-top: 40px; background-color: #003354;">
+            <div class="page-content">
+                <center>
+                    <div class="container">
+                        <div class="cover bg-white" style="border-radius: 10px; width: 105%; background-color: #dcffe2; border-radius: 17px;">
+                            <div class="cover-bg p-3 p-lg-4 text-white" style="background-color: #DCF0FF; border-radius: 17px;">
+                                <br>
+                                <h1 style="color: #003354;">Tabel Data Laporan Aksi Penanganan</h1>
+                                <hr color="blue" style="width: 28%; align-content: center;" size="10%">
+                                <br>
+                                <div style="background-color: #DCF0FF; width: 100%;">
+
+                                    <table class="table table-striped table-hover" style="background-color: #DCF0FF;">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nama Komunitas</th>
+                                                <th scope="col">Jenis Aksi</th>
+                                                <th scope="col">Lokasi</th>
+                                                <th scope="col">Tanggal</th>
+                                                <th scope="col">Prakiraan Dana Total</th>
+                                                <th scope="col">Deskripsi Seluruh Aksi</th>
+                                                <th scope="col">Kelola</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for acid in act %}
+                                            <tr>
+                                                <td>{{ acid.nama_komunitas }}</td>
+                                                <td>{{ acid.kegiatan_id }}</td>
+                                                <td>{{ acid.lokasi_aksi }}</td>
+                                                <td>{{ acid.waktu_aksi }}</td>
+                                                <td>{{ acid.perk_dana_total }}</td>
+                                                <td>{{ acid.deskripsi_aksi }}</td>
+                                                <td>
+                                                    <button class="btn btn-primary" style="height: 33px; width: 71px; color: #ffffff; margin-bottom: 5px; text-decoration: none; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" onclick="window.location.href='/formaksi';">Tambah</button><br>
+                                                    <button class="btn btn-warning" style="height: 33px; width: 71px; color: #200f0f; margin-bottom: 5px; text-decoration: none; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a style="text-decoration: none; color: #200f0f;" href="{% url 'aksi_update' acid.id %}">Edit</a></button><br>
+                                                    <button class="btn btn-danger" style="height: 33px; width: 71px; color: #ffffff; margin-bottom: 5px; text-decoration: none; font-size: 13px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a style="text-decoration: none; color: #e9e9e9;" href="#" onclick="hapusaksi('{{ acid.id }}' ,'{{ acid.waktu_aksi }}')">Hapus</a></button>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="cover bg-white" style="border-radius: 10px; width: 105%; background-color: #dcffe2; border-radius: 17px;">
+                            <div class="cover-bg p-3 p-lg-4 text-white" style="background-color: #DCF0FF; border-radius: 17px;">
+                                <br>
+                                <hr>
+                                <h1 style="color: #003354; font-size: 34px;">Tabel Data Laporan Aksi Pertama</h1>
+                                <hr color="blue" style="width: 20%; align-content: center;" size="10%">
+                                <br>
+                                <div style="background-color: #DCF0FF; width: 100%;">
+
+                                    <table class="table table-striped table-hover" style="background-color: #DCF0FF;">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Jenis Aksi</th>
+                                                <th scope="col">Perkembangan Aksi Pertama</th>
+                                                <th scope="col">Prakiraan Dana</th>
+                                                <th scope="col">Deskripsi Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for acid in act %}
+                                            <tr>
+                                                <td>{{ acid.kegiatan_id }}</td>
+                                                <td>{{ acid.perkem_aksi }}</td>
+                                                <td>{{ acid.perkem_dana }}</td>
+                                                <td>{{ acid.perkem_deskripsi }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <hr>
+                                <h1 style="color: #003354; font-size: 34px;">Tabel Data Laporan Aksi Kedua</h1>
+                                <hr color="blue" style="width: 20%; align-content: center;" size="10%">
+                                <br>
+                                <div style="background-color: #DCF0FF; width: 100%;">
+
+                                    <table class="table table-striped table-hover" style="background-color: #DCF0FF;">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Jenis Aksi</th>
+                                                <th scope="col">Perkembangan Aksi Kedua</th>
+                                                <th scope="col">Prakiraan Dana</th>
+                                                <th scope="col">Deskripsi Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for acid in act %}
+                                            <tr>
+                                                <td>{{ acid.kegiatan_id }}</td>
+                                                <td>{{ acid.perkem_aksi2 }}</td>
+                                                <td>{{ acid.perkem_dana2 }}</td>
+                                                <td>{{ acid.perkem_deskripsi2 }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                    </div>
+            </div>
+        </div>
+        </center>
+        </div>
+        </div>
+    </nav>
+    <script>
+        function hapusaksi(id_act, waktu_aksi) {
+            swal({
+                    title: "Apakah Kamu Yakin?",
+                    text: "Setelah Laporan Tanggal " + waktu_aksi + " ini dihapus, data tidak dapat dikembalikan lagi!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Data Laporan Tanggal " + waktu_aksi + " ini Berhasil Dihapus !", "Berhasil").then(function() { //function supaya si swal dan file nyatu. Supaya ketika OK diklik, maka data akan benar-benar terhapus.
+                            window.location = "/aksi_kelola/aksi_hapus/" + id_act;
+                        })
+                    }
+                });
+        }
+    </script>
+
+
+</header>
+
+{% endblock content %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% load static %} {% load humanize %} {% block content %}
+<header>
+    <!--Header dan Highlight Utama-->
+    <nav class="navbar">
+        <div class="container-fluid" style="padding-top: 20px;">
+            <div class="#">
+                <a href="/" class="logo"><img src="{% static 'image/logo.png' %}" class="img-fluid"></a>
+                <a class="mop" href="#">Tangan Laut</a>
+            </div>
+            <div class="nav navbar-nav1">
+                <a href="/" class="btn">Beranda</a>
+                <a href="/donasi" class="btn">Donasi</a>
+                <a href="/aksi" class="btn">Aksi</a>
+                <a href="{% url 'logout' %}" class="btn">Logout</a>
+                <a href="#first-section" class="btn btn1">Hubungi Kami</a>
+            </div>
+
+        </div>
+        <div style="padding-top: 40px; background-color: #003354;">
+            <div class="page-content">
+                <center>
+                    <div class="container">
+                        <div class="cover bg-white" style="border-radius: 10px; width: 105%; background-color: #DCF0FF; border-radius: 17px;">
+                            <div class="cover-bg p-3 p-lg-4 text-white" style="background-color: #DCF0FF; border-radius: 17px;">
+                                <br>
+                                <h1 style="color: #003354;">Dashboard</h1>
+                                <hr color="blue" style="width: 28%; align-content: center;" size="10%">
+                                <br>
+                                <h1 style="color: #003354; text-align: left; font-size: 30px;">Aksi Penanganan</h1>
+                                <div class="row">
+                                    <div class="col-sm-4" style="padding-top: 10px;">
+                                        <div class="card mb-3" style="border-radius: 10px; background-color: #003354;">
+                                            <img src="{% static 'image/aksi2.png' %}" class="card-img-top" style="filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.25));border-radius: 10px; border: 9px solid #ffffff;">
+                                            <div class="card-body">
+                                                <br>
+                                                <h5 class="card-title" style="text-align: justify;margin-top: -10px;">Relawan berhasil mengumpulkan 1436 Kg sampah yang di dominasi oleh sampah plastik di pesisir Desa Margasari, Lampung Timur.</h5>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <button class="btn tombal" style="margin-top: -40px; width: 90%; margin-left: -190px; background-color: #ffffff; height: 45px;"><a href="/formaksi" style="text-decoration: none;color: #003354;">Lengkapi Laporan</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4" style="padding-top: 10px;">
+                                        <div class="card mb-3" style="border-radius: 20px; background-color: #003354;">
+                                            <img src="{% static 'image/aksi3.png' %}" class="card-img-top" style="filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.25));border-radius: 10px; border: 9px solid #ffffff;">
+                                            <div class="card-body">
+                                                <br>
+                                                <h5 class="card-title" style="text-align: justify;margin-top: -10px;">Biota laut hampir punah, ternyata terdapat sampah sebesar 1 ton yang ditemui oleh relawan pada Pantai Satelit, Desa Tembokrejo, Banyuwangi</h5>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <button class="btn tombal" style="margin-top: -40px; width: 90%; margin-left: -190px; background-color: #ffffff; height: 45px;"><a href="/formaksi" style="text-decoration: none;color: #003354;">Lengkapi Laporan</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4" style="padding-top: 10px;">
+                                        <div class="card mb-3" style="border-radius: 10px; background-color: #003354;">
+                                            <img src="{% static 'image/aksi4.png' %}" class="card-img-top" style="filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.25));border-radius: 10px; border: 9px solid #ffffff;">
+                                            <div class="card-body">
+                                                <br>
+                                                <h5 class="card-title" style="text-align: justify;margin-top: -10px;">Waspada! meskipun kecil, sedotan sangat berdampak pada ekosistem, relawan menemukan 50 Kg sampah sedotan di Pantai Baros, Daerah Istimewa Yogyakarta </h5>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <button class="btn tombal" style="margin-top: -40px; width: 90%; margin-left: -190px; background-color: #ffffff; height: 45px;"><a href="/formaksi" style="text-decoration: none;color: #003354;">Lengkapi Laporan</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Akhir Konten Aksi Penanganan-->
+                                    <hr style="color: #003354;">
+                                    <div class="row">
+                                        <h1 style="text-align: center; padding-top: 10px; color: #003354;">Rencana Aksi Laut</h1>
+                                        <div class="col-7 imagecontainer" style="padding-top: 30px;">
+                                            <img src="{% static 'image/bigplastic.png' %}" alt="" class="img-thumbnail" style="filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.25)) drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));">
+                                        </div>
+                                        <div class="col-5" style="padding-top: 113px;">
+                                            <p style="text-align: justify; color: #003354; font-weight: 1000; font-size: 18px; padding-top: 15px;">Kami membutuhkanmu! untuk ikut serta dalam aksi-aksi penanganan, pencegahan, dan pengelolaan sampah laut di perairan Indonesia.</p>
+                                            <br>
+                                            <button class="btn tombul" onclick="window.location.href='/dashadmin';" style="width: 35%; height: 48px; margin-left: -260px;">Admin</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+{% endblock content %}

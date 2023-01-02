@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% load static %} {% load humanize %} {% block content %}
+<div style="padding-top: 40px; background-color: #003354;">
+    <div class="page-content">
+        <center>
+            <div class="container">
+                <div class="cover bg-white" style="border-radius: 10px; width: 55%;">
+                    <div class="cover-bg p-3 p-lg-4 text-white">
+                        <div class="row">
+
+                            <div class="text-center text-md-start">
+                                <div class="text-center text-md-start">
+                                    <h5 style="text-align: center; color: rgb(6, 14, 44); font-family: 'Poppins'; font-weight: 500; font-size: 30px">Donasi</h5>
+                                    <div class="card w-100">
+                                        <div class="card-body" style="box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.25), 1px 1px 7px rgba(0, 0, 0, 0.25);">
+                                            <h5 class="card-title" style="color: rgb(1, 12, 53); font-family: 'Poppins'; font-weight: 500; padding-left: 3px; font-size: 14px; ">Kamu akan berdonasi untuk aksi...</h5>
+                                            <h6 class="card-title" style="color: #1a2d6b; font-size: 18px; font-weight: 600; margin-top: -5px; ">Aksi Tangan Laut di Pantai Baros, Daerah Istimewa Yogyakarta</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+
+                                <br>
+                                <h5 style="color: rgb(1, 12, 53); font-family: 'Poppins'; font-weight: 500; font-size: 18px;">Pilih Nominal Donasi</h5>
+                                {% for product in products %}
+                                <center>
+                                    <button class="btn tombil" style="width: 95%; margin-top: 10px; margin-bottom: 5px;"><a href="{% url 'checkout' product.id %}" class="card-footer-item" style="text-decoration: none;">
+                                        <p class="title is-4" style="font-family: 'Poppins';
+                                        font-style: normal;
+                                        font-weight: 400;
+                                        font-size: 20px; padding-top: 6px;">{{ product.name }} Rp {{ product.price|intcomma }}</p>
+                                    </a></button>
+                                </center>
+                                {% endfor %}
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+</div>
+{% endblock %}

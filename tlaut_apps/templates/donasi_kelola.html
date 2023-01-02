@@ -1,0 +1,92 @@
+{% extends 'base.html' %} {% load static %} {% load humanize %} {% block content %}
+<header>
+    <!--Header dan Highlight Utama-->
+    <nav class="navbar">
+        <div class="container-fluid" style="padding-top: 20px;">
+            <div class="#">
+                <a href="/" class="logo"><img src="{% static 'image/logo.png' %}" class="img-fluid"></a>
+                <a class="mop" href="#">Tangan Laut</a>
+            </div>
+            <div class="nav navbar-nav1">
+                <a href="/" class="btn">Beranda</a>
+                <a href="/donasi" class="btn">Donasi</a>
+                <a href="/aksi" class="btn">Aksi</a>
+                <a href="/donasi_kelola" class="btn">Login</a>
+                <a href="#first-section" class="btn btn1">Hubungi Kami</a>
+            </div>
+
+        </div>
+
+        <div style="padding-top: 40px; background-color: #003354;">
+            <div class="page-content">
+                <center>
+                    <div class="container">
+                        <div class="cover bg-white" style="border-radius: 10px; width: 105%; background-color: #DCF0FF; border-radius: 17px;">
+                            <div class="cover-bg p-3 p-lg-4 text-white" style="background-color: #DCF0FF; border-radius: 17px;">
+                                <br>
+                                <h1 style="color: #003354;">Tabel Data Donasi</h1>
+                                <hr color="blue" style="width: 28%; align-content: center;" size="10%">
+                                <br>
+                                <div style="background-color: #DCF0FF; width: 100%;">
+
+                                    <table class="table table-striped table-hover" style="background-color: #DCF0FF;">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nama</th>
+                                                <th scope="col">Nominal</th>
+                                                <th scope="col">Waktu</th>
+                                                <th scope="col">Metode</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Deskripsi</th>
+                                                <th scope="col">Kelola</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for donas in donate %}
+                                            <tr>
+                                                <td>{{ donas.nama }}</td>
+                                                <td>{{ donas.nominal_id }}</td>
+                                                <td>{{ donas.waktu }}</td>
+                                                <td>{{ donas.metode_id }}</td>
+                                                <td>{{ donas.email }}</td>
+                                                <td>{{ donas.deskripsi }}</td>
+                                                <td>
+                                                    <button class="btn btn-primary" style="height: 33px; width: 71px; color: #ffffff; margin-bottom: 5px; text-decoration: none; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" onclick="window.location.href='/donasi';">Tambah</button><br>
+                                                    <button class="btn btn-warning" style="height: 33px; width: 71px; color: #200f0f; margin-bottom: 5px; text-decoration: none; font-size: 14px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a style="text-decoration: none; color: #200f0f;" href="{% url 'donasi_update' donas.id %}">Edit</a></button><br>
+                                                    <button class="btn btn-danger" style="height: 33px; width: 71px; color: #ffffff; margin-bottom: 5px; text-decoration: none; font-size: 13px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><a style="text-decoration: none; color: #e9e9e9;" href="#" onclick="hapus_donasi('{{ donas.id }}' ,'{{ donas.nama }}')">Hapus</a></button>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </nav>
+    <script>
+        function hapus_donasi(id_donate, nama) {
+            swal({
+                    title: "Apakah Kamu Yakin?",
+                    text: "Setelah Donasi " + nama + "ini dihapus, data tidak dapat dikembalikan lagi!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Data Donasi " + nama + " ini Berhasil Dihapus !", "Berhasil").then(function() { //function supaya si swal dan file nyatu. Supaya ketika OK diklik, maka data akan benar-benar terhapus.
+                            window.location = "/donasi_kelola/donasi_hapus/" + id_donate;
+                        })
+                    }
+                });
+        }
+    </script>
+
+</header>
+
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% load static %} {% load humanize %} {% block content %}
+<header>
+    <!--Header dan Highlight Utama-->
+    <nav class="navbar">
+        <div class="container-fluid" style="padding-top: 20px;">
+            <div class="#">
+                <a href="/" class="logo"><img src="{% static 'image/logo.png' %}" class="img-fluid"></a>
+                <a class="mop" href="#">Tangan Laut</a>
+            </div>
+            <div class="nav navbar-nav1">
+                <a href="/" class="btn">Beranda</a>
+                <a href="/donasi" class="btn">Donasi</a>
+                <a href="/aksi" class="btn">Aksi</a>
+                <a href="/donasi_kelola" class="btn">Login</a>
+                <a href="#first-section" class="btn btn1">Hubungi Kami</a>
+            </div>
+
+        </div>
+        <div style="padding-top: 40px; background-color: #003354;">
+            <div class="page-content">
+                <center>
+                    <div class="container">
+                        <div class="cover bg-white" style="border-radius: 10px; width: 105%; background-color: #DCF0FF; border-radius: 17px;">
+                            <div class="cover-bg p-3 p-lg-4 text-white" style="background-color: #DCF0FF; border-radius: 17px;">
+                                <br>
+                                <h1 style="color: #003354;">Form Laporan Aksi Penanganan</h1>
+                                <hr color="blue" style="width: 28%; align-content: center;" size="10%">
+                                <br>
+                                <form action="/formaksi/" method="post" enctype="multipart/form-data" style="font-family: 'Poppins';">
+                                    {% csrf_token %} {{ form.as_p}}
+
+                                    <center><br><input type="submit" value="Simpan" class="btn btn-primary"><button style="margin-left: 10px;" class="btn btn-warning" onclick="window.location.href='/relawan';">Kembali</button></center>
+                                    <br>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+{% endblock content %}

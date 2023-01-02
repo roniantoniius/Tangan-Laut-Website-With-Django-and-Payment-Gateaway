@@ -1,0 +1,7 @@
+venv
+.env
+*.pyc
+.vscode
+.idea
+.sqlite3
+git
