@@ -1,2 +1,2 @@
-midtransclient==1.4.1
+midtransclient==1.2.0
 python-dotenv==0.21.0
