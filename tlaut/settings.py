@@ -148,3 +148,4 @@ MIDTRANS = {
     'SERVER_KEY': os.environ.get('MIDTRANS_SERVER_KEY'),
     'CLIENT_KEY': os.environ.get('MIDTRANS_CLIENT_KEY'),
 }
+print(MIDTRANS['MERCHANT_ID'])
