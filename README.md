@@ -18,7 +18,7 @@ $ ./manage.py migrate
 $ ./manage.py runserver
 ```
 
-Simulasi pembayaran bisa dilakukan melalui [midtrans payment sandbox](https://simulator.sandbox.midtrans.com/bca/va/index).
+Payment simulation can be done through [midtrans payment sandbox](https://simulator.sandbox.midtrans.com/bca/va/index).
 
 Patent
 
