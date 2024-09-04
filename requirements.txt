@@ -13,3 +13,4 @@ django-taggit
 gunicorn
 Pillow
 django-widget-tweaks
+psycopg2-binary
